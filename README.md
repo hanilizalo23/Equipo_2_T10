@@ -1,1 +1,1 @@
-# Equipo_2_T10
+Generation and measure of a square signal with FTM. 
