@@ -17,7 +17,11 @@
 
 #define clock_frequency 21000000
 
+#define DELAY_CONST 650 //Delay for push buttons
 
+#define INCREASE15 1.15
+#define DECREASE5  0.95
+#define ONE        1U
 
 int main(void)
 {
@@ -40,8 +44,11 @@ int main(void)
 	GPIO_data_direction_pin(GPIO_C,GPIO_INPUT, bit_6);
 	GPIO_data_direction_pin(GPIO_A,GPIO_INPUT, bit_4);
 
+	//Configuration function for FlexTimer
+	FlexTimer_Init();
 
 	while(1) {
+
 	}
 	return 0;
 }
