@@ -1,4 +1,0 @@
-D:\nxp\SEBMI\flex_timers\FlexTimerPWM\CMSIS/core_cm4.h:1626:22:NVIC_EnableIRQ	16	static
-D:\nxp\SEBMI\flex_timers\FlexTimerPWM\CMSIS/core_cm4.h:1698:22:NVIC_SetPriority	16	static
-../source/NVIC.c:15:6:NVIC_enableInterruptAndPriotity	16	static
-../source/NVIC.c:25:6:NVIC_setBASEPRI_threshold	24	static
