@@ -49,6 +49,29 @@ int main(void)
 
 	while(1) {
 
+		if(GPIO_read_pin(GPIO_C, bit_6) && !GPIO_read_pin(GPIO_A, bit_4))
+		{
+			while(GPIO_read_pin(GPIO_C, bit_6) && !GPIO_read_pin(GPIO_A, bit_4))
+			{
+				delay(DELAY_CONST);
+			}
+
+			frequency = frequency * INCREASE15; //Increase of 15 %
+			mod_register_value = (clock_frequency/frequency) - ONE;
+			FlexTimer_update_channel_value(mod_register_value);
+
+		}
+		if(!GPIO_read_pin(GPIO_C, bit_6) && GPIO_read_pin(GPIO_A, bit_4))
+		{
+			while(!GPIO_read_pin(GPIO_C, bit_6) && GPIO_read_pin(GPIO_A, bit_4))
+			{
+				delay(DELAY_CONST);
+			}
+
+			frequency = frequency * DECREASE5; //Decrease 5 %
+			mod_register_value = (clock_frequency/frequency) - ONE;
+			FlexTimer_update_channel_value(mod_register_value);
+		}
 	}
 	return 0;
 }
