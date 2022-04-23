@@ -1,2 +1,0 @@
-../source/FlexTimer.c:18:6:FTM0_IRQHandler	4	static
-../source/FlexTimer.c:26:6:FlexTimer_Init	4	static
