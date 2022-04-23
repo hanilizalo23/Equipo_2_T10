@@ -30,6 +30,10 @@ void FTM0_IRQHandler()
 	FTM0->SC &= ~ FTM_SC_TOF_MASK;
 }
 
+float get_Frequency(void)
+{
+	return (frequency);
+}
 
 void FlexTimer_Init(void)
 {
