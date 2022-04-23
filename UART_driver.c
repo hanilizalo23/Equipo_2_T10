@@ -52,7 +52,13 @@ void UART_init(void)
 
 void UART_write_freq(void)
 {
+	float frequency = (uint8_t) get_Frequency();
 
+	UART_WriteBlocking(DEMO_UART, g_tipString, my_sizeof(g_tipString) - 1);
+	UART_WriteBlocking(DEMO_UART, "\033[2J", my_sizeof("\033[2J") - 1);
+	UART_WriteBlocking(DEMO_UART, "\033[10;10H", my_sizeof("\033[10;10H") - 1);
+	UART_WriteBlocking(DEMO_UART, "La frecuencia medida es: ", my_sizeof("La frecuencia medida es: ") - 1);
+	UART_WriteBlocking(UART0, &frequency, my_sizeof(frequency));
 }
 
 void UART_UserCallback(UART_Type *base, uart_handle_t *handle, status_t status, void *userData)
