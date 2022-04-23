@@ -14,6 +14,13 @@
 #define DC 0.8
 #define FREQ 20U
 
+void FlexTimer_update_channel_value(float channel_value)
+{
+	/**Assigns a new value for the frequency*/
+	FTM0->MOD = (uint16_t) channel_value;
+	FTM0->CONTROLS[0].CnV = (uint16_t) channel_value*DC;
+}
+
 void FlexTimer_Init(void)
 {
 	/**Clock gating for FlexTimer*/
