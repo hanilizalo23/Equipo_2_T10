@@ -10,15 +10,26 @@
 #include "FlexTimer.h"
 #include "MK64F12.h"
 
+uint32_t previous_value = 0;
+uint32_t current_value = 0;
+float frequency= 0;
+const float FTMCK = 164062.5; //Needed for the edge caption
+
 void FTM0_IRQHandler()
 {
 	if(FTM0->STATUS & 0x01)
 	{
+		previous_value = current_value;
+		current_value = FTM0->CONTROLS[0].CnV; /*We read the value of the register, which has difference between rising edges*/
 
+		/*We apply the calculation of the frequency*/
+		frequency =  1/((current_value - previous_value)*(1/FTMCK));
+		FTM0->STATUS &= 0xFE;
 	}
 	/**Clearing the overflow interrupt flag*/
 	FTM0->SC &= ~ FTM_SC_TOF_MASK;
 }
+
 
 void FlexTimer_Init(void)
 {
